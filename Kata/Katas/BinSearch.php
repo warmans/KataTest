@@ -8,6 +8,8 @@ class BinSearch extends \Kata\Core\KataAbstract {
 	}
 	
 	/**
+	* Implements binary search using a recursive approach
+	* 
 	* @enabled: true
 	*/
 	public function binSearchRecursive($haystack, $needle, $startPos=NULL, $endPos=NULL){		
@@ -36,18 +38,27 @@ class BinSearch extends \Kata\Core\KataAbstract {
 	}
 	
 	/**
+	* Implements binary search iteratively
+	*
 	* @enabled: true
 	*/
 	public function binSearchIterative($haystack, $needle){
-		$l = 0; 
-		$r = count($haystack);
+		$left = 0; 
+		$right = count($haystack);
 
-		while($l < $r)
-		{
-			if($needle == $haystack[$i = ($r + $l) >> 1])
-				return $i;
+		while($left < $right) {
+				
+			$midPoint = ($right + $left) >> 1;
+						
+			if($needle == $haystack[$midPoint]){
+				return $midPoint;
+			}
 
-			if($haystack[$i] > $needle) $r = $i; else $l = $i + 1;
+			if($haystack[$midPoint] > $needle){
+				$right = $midPoint;
+			} else {
+				$left = $midPoint + 1;
+			}
 		}
 
 		return false;

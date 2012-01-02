@@ -4,6 +4,7 @@
 	class BinSearch extends \Kata\Core\TestSuite {
 	
 		public function __construct(){
+			//name, expected result, method arguments (in this case haystack, needle)
 			$this->addTest(\Kata\Core\Test::build("t1.1", FALSE, array(array(), 3)));
 			$this->addTest(\Kata\Core\Test::build("t1.2", FALSE, array(array(1), 3)));
 			$this->addTest(\Kata\Core\Test::build("t1.3", 0, array(array(1), 1)));
