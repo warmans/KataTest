@@ -38,7 +38,34 @@ class BinSearch extends \Kata\Core\KataAbstract {
 	}
 	
 	/**
-	* Implements binary search iteratively
+	* Implements binary search iteratively using bitwise division
+	*
+	* @enabled: true
+	*/
+	public function binSearchIterativeBitwise($haystack, $needle){
+		$left = 0; 
+		$right = count($haystack);
+
+		while($left < $right) {
+				
+			$midPoint = ($right + $left) >> 1;
+						
+			if($needle == $haystack[$midPoint]){
+				return $midPoint;
+			}
+
+			if($haystack[$midPoint] > $needle){
+				$right = $midPoint;
+			} else {
+				$left = $midPoint + 1;
+			}
+		}
+
+		return false;
+	}
+	
+	/**
+	* Implements binary search iteratively using
 	*
 	* @enabled: true
 	*/
@@ -48,7 +75,7 @@ class BinSearch extends \Kata\Core\KataAbstract {
 
 		while($left < $right) {
 				
-			$midPoint = ($right + $left) >> 1;
+			$midPoint = floor(($right + $left)/2);
 						
 			if($needle == $haystack[$midPoint]){
 				return $midPoint;
