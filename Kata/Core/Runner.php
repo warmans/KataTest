@@ -47,7 +47,7 @@ class Runner {
 	
 	protected function _testAllMethods($kataInstance){
 		foreach($this->_getPublicClassMethods($kataInstance) as $method):
-			if($this->_getCommentTagValue($method->getDocComment(), '@enabled') == 'true'){
+			if($this->_getCommentTagValue($method->getDocComment(), '@enabled') != 'false'){
 				$this->_testMethod($kataInstance, $method);
 			}
 		endforeach;				
