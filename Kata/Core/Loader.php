@@ -3,7 +3,7 @@ namespace Kata\Core;
 
 class Loader {
 	public static function autoload($name){
-		include(APPLICATION_PATH.'\\'.$name.'.php');
+		require_once(APPLICATION_PATH.'\\'.$name.'.php');
 	}	
 }
 spl_autoload_register(__NAMESPACE__.'\Loader::autoload');
