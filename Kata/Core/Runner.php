@@ -4,19 +4,21 @@ namespace Kata\Core;
 class Runner {
 
 	public function test($className = NULL, $methodName = NULL){
-		if(!$className && !$methodName){
-			$this->_testAllClasses();
-		} else {
-			if($className && !$methodName){
+		switch(TRUE):
+			case (!$className && !$methodName):
+				$this->_testAllClasses();
+				break;
+			case ($className && !$methodName):
 				$this->_testClass($className);
-			} elseif ($className && $methodName) {
+				break;
+			case ($className && $methodName):
 				$kataInstance = $this->_getClassInstance($className);
 				$this->_testMethod($kataInstance, $this->_getPublicClassMethod($kataInstance, $methodName));
-			} else {
+				break;
+			default:
 				throw new Exception('You cannot test a method without specifying a class');
-			}
-		}
-		
+		endswitch;
+			
 		return TRUE;
 	}
 	
