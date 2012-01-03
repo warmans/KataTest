@@ -1,1 +1,26 @@
 Library for practising PHP kata http://codekata.pragprog.com/
+
+Requires
+------------------------------------------------------------------------------------------
+PHP 5.3+
+
+Usage
+------------------------------------------------------------------------------------------
+Running the kata.php file in the project's root directory (php -f kata.php) will 
+collect all classes from the /Kata/Katas directory and run any methods therein against 
+the test suite set-up for the class.
+
+Please see the example class /Kata/Katas/BinSearch.php
+
+Advanced Usage
+------------------------------------------------------------------------------------------
+If you wish to run only a single class you can specify the class name in the
+command line like this:
+
+php kata.php BinSearch 
+------------Class-^ 
+
+If you then want to limit the class to only a single method add this also:
+
+php kata.php BinSearch binSearchRecursive
+------------Class-^ -----Method-^
