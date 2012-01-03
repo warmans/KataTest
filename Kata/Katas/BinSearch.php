@@ -1,16 +1,22 @@
 <?php
 namespace Kata\Katas;
 
+/**
+* Example Class with three versions of Binary Search. Only public methods are run.
+* Methods can be disabled with a @enabled: false tag in the method Doc.
+*/
 class BinSearch extends \Kata\Core\KataAbstract {
-	
-	protected function setUp(){
+
+	/**
+	* _setUp must exist and must always set a testSuite. Unlike PHPUnit _setUp is called only once.
+	*/
+	protected function _setUp(){
 		$this->setTestSuite(new \Kata\Tests\BinSearch);
+		parent::_setUp();
 	}
 	
 	/**
 	* Implements binary search using a recursive approach
-	* 
-	* @enabled: true
 	*/
 	public function binSearchRecursive($haystack, $needle, $startPos=NULL, $endPos=NULL){		
 				
@@ -39,8 +45,6 @@ class BinSearch extends \Kata\Core\KataAbstract {
 	
 	/**
 	* Implements binary search iteratively using bitwise division
-	*
-	* @enabled: true
 	*/
 	public function binSearchIterativeBitwise($haystack, $needle){
 		$left = 0; 
@@ -61,13 +65,11 @@ class BinSearch extends \Kata\Core\KataAbstract {
 			}
 		}
 
-		return false;
+		return FALSE;
 	}
 	
 	/**
-	* Implements binary search iteratively using
-	*
-	* @enabled: true
+	* Implements binary search iteratively
 	*/
 	public function binSearchIterative($haystack, $needle){
 		$left = 0; 
@@ -88,6 +90,6 @@ class BinSearch extends \Kata\Core\KataAbstract {
 			}
 		}
 
-		return false;
+		return FALSE;
 	}
 }
