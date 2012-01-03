@@ -3,22 +3,31 @@ namespace Kata\Core;
 
 abstract class KataAbstract {
 	
-	private $testSuite;
+	private $_testSuite;
 	
-	public function __construct(){
-		$this->setUp();
-	}
-	
-	protected function setUp(){
+	protected function _setUp(){
 		return TRUE;
 	}
 	
+	/**
+	* @enabled: false
+	*/
+	public function __construct(){
+		$this->_setUp();
+	}
+		
+	/**
+	* @enabled: false
+	*/
 	public function setTestSuite(TestSuite $testSuite){
-		$this->testSuite = $testSuite;
+		$this->_testSuite = $testSuite;
 	}
 	
+	/**
+	* @enabled: false
+	*/
 	public function getTestSuite(){
-		return $this->testSuite;
+		return $this->_testSuite;
 	}
 	
 }
