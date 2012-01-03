@@ -3,40 +3,40 @@ namespace Kata\Core;
 
 class Test {
 	
-	private $name;
-	private $args;
-	private $expectedResult;
-	private $assertion;
+	private $_name;
+	private $_expectedResult;
+	private $_args;
+	private $_assertion;
 	
 	public function __construct($name, $expectedResult, $args, $assertion='equal'){
-		$this->name = $name;
-		$this->expectedResult = $expectedResult;
-		$this->args = $args;
-		$this->assertion = $assertion;
+		$this->_name = $name;
+		$this->_expectedResult = $expectedResult;
+		$this->_args = $args;
+		$this->_assertion = $assertion;
 	}
 	
 	public function getArgs(){
-		if(!is_array($this->args)){
+		if(!is_array($this->_args)){
 			throw new Exception("arguments must be an array");
 		}
-		return $this->args;
+		return $this->_args;
 	}
 	
 	public function getExpectedResult(){
-		return $this->expectedResult;
+		return $this->_expectedResult;
 	}
 	
 	public function checkResult($result){
-		switch($this->assertion):
+		switch($this->_assertion):
 			case "equals":
-				return ($result == $this->expectedResult);
+				return ($result == $this->_expectedResult);
 			default:
 				throw new Exception("Unknown assertion: $this->assertion");
 		endswitch;
 	}
 	
 	public function getName(){
-		return $this->name;
+		return $this->_name;
 	}
 	
 	public static function build($name, $expectedResult, $args, $assertion='equals'){

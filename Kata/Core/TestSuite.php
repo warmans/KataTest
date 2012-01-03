@@ -2,30 +2,30 @@
 namespace Kata\Core;
 
 class TestSuite implements \Iterator {
-	private $position = 0;	
-	private $tests = array();	
+	private $_position = 0;	
+	private $_tests = array();	
 
 	public function current() {
-		return $this->tests[$this->position];
+		return $this->_tests[$this->position];
 	}
 	
 	public function key(){
-		return $this->position;
+		return $this->_position;
 	}
 	
 	public function next(){
-		++$this->position;
+		++$this->_position;
 	}
 	
 	public function rewind(){
-		$this->position = 0;
+		$this->_position = 0;
 	}
 	
 	public function valid(){
-		return isset($this->tests[$this->position]);
+		return isset($this->_tests[$this->_position]);
 	}
 	
 	public function addTest(Test $test){
-		$this->tests[] = $test;
+		$this->_tests[] = $test;
 	}
 }

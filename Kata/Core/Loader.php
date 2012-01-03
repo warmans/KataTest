@@ -1,11 +1,9 @@
 <?php
-	namespace Kata\Core;
-	
-	class Loader {
-	
-		public static function autoload($name){
-			include(APPLICATION_PATH.'\\'.$name.'.php');
-		}
-		
-	}
-	spl_autoload_register(__NAMESPACE__.'\Loader::autoload');
+namespace Kata\Core;
+
+class Loader {
+	public static function autoload($name){
+		include(APPLICATION_PATH.'\\'.$name.'.php');
+	}	
+}
+spl_autoload_register(__NAMESPACE__.'\Loader::autoload');
