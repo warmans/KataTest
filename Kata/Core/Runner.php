@@ -12,7 +12,7 @@ class Runner {
 				$this->_testClass($className);
 				break;
 			case ($className && $methodName):
-				$kataInstance = $this->_getClassInstance($className);
+				$kataInstance = $this->_getKataClassInstance($className);
 				$this->_testMethod($kataInstance, $this->_getPublicClassMethod($kataInstance, $methodName));
 				break;
 			default:
@@ -22,7 +22,7 @@ class Runner {
 		return TRUE;
 	}
 	
-	private function _getClassInstance($className){
+	private function _getKataClassInstance($className){
 		$realClassName = "\Kata\\Katas\\".$className;
 		return new $realClassName;
 	}
@@ -44,7 +44,7 @@ class Runner {
 	
 	protected function _testClass($className){
 		Log::log("Testing Class $className");
-		return $this->_testAllMethods($this->_getClassInstance($className));
+		return $this->_testAllMethods($this->_getKataClassInstance($className));
 	}
 	
 	protected function _testAllMethods($kataInstance){
