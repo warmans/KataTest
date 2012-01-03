@@ -6,7 +6,7 @@ class TestSuite implements \Iterator {
 	private $_tests = array();	
 
 	public function current() {
-		return $this->_tests[$this->position];
+		return $this->_tests[$this->_position];
 	}
 	
 	public function key(){
