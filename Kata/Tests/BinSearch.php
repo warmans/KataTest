@@ -1,6 +1,10 @@
 <?php
 	namespace Kata\Tests;
 	
+	/**
+	* Example test suite for BinarySearch Katas
+	* Test suites do not need to be defined as a class, you could just create the suite in _setUp
+	*/
 	class BinSearch extends \Kata\Core\TestSuite {
 	
 		public function __construct(){
