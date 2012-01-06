@@ -22,8 +22,8 @@ class Runner {
                 $this->_testClass($className);
                 break;
             case ($className && $methodName):
-                $kataInstance = $this->_getKataClassInstance($className);
-                $this->_testMethod($kataInstance, $this->_getPublicClassMethod($kataInstance, $methodName));
+                $classInstance = $this->_getKataClassInstance($className);
+                $this->_testMethod($classInstance, $this->_getPublicClassMethod($classInstance, $methodName));
                 break;
             default:
                 throw new Exception('You cannot test a method without specifying a class');
@@ -83,12 +83,12 @@ class Runner {
     /**
      * Test all methods of class instance
      * 
-     * @param \Kata\Core\KataAbstract $kataInstance 
+     * @param \Kata\Core\KataAbstract $classInstance 
      */
-    protected function _testAllMethods(\Kata\Core\KataAbstract $kataInstance) {
-        foreach ($this->_getPublicClassMethods($kataInstance) as $method):
+    protected function _testAllMethods(\Kata\Core\KataAbstract $classInstance) {
+        foreach ($this->_getPublicClassMethods($classInstance) as $method):
             if ($this->_getCommentTagValue($method->getDocComment(), '@enabled') != 'false') {
-                $this->_testMethod($kataInstance, $method);
+                $this->_testMethod($classInstance, $method);
             }
         endforeach;
     }
@@ -135,15 +135,15 @@ class Runner {
     /**
      * Run all tests against method. Log Results to console.
      * 
-     * @param \Kata\Core\KataAbstract $kataInstance
+     * @param \Kata\Core\KataAbstract $classInstance
      * @param \ReflectionMethod $method 
      */
-    protected function _testMethod(\Kata\Core\KataAbstract $kataInstance, \ReflectionMethod $method) {
+    protected function _testMethod(\Kata\Core\KataAbstract $classInstance, \ReflectionMethod $method) {
         Log::log("Testing Method " . $method->getName());
         $mStartTime = microtime();
-        foreach ($kataInstance->getTestSuite() as $test):
+        foreach ($classInstance->getTestSuite() as $test):
             $tStartTime = microtime();
-            $result = $method->invokeArgs($kataInstance, $test->getArgs());
+            $result = $method->invokeArgs($classInstance, $test->getArgs());
             $tEndTime = microtime();
             Log::log($test->getName() . " " . (($test->checkResult($result)) ? "passed" : "*failed*"));
         endforeach;
