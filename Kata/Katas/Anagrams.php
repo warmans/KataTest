@@ -13,14 +13,12 @@ class Anagrams extends \Kata\Core\KataAbstract {
         $testSuite = new \Kata\Core\TestSuite;
         
         $testSuite->addTest(\Kata\Core\Test::build("t.ammo",
-            array(
-                'a', 'am', 'm', 'ma', 'mamo', 'mao', 'mo', 'o', 'oam', 'om'), 
-            array('ammo'))
+            array('a', 'am', 'm', 'ma', 'mamo', 'mao', 'mo', 'o', 'oam', 'om'), //expected result
+            array('ammo'))  //find anagrams/sub-words for this
         );
         
         $testSuite->addTest(\Kata\Core\Test::build("t.mamo",
-            array(
-                'a', 'am', 'ammo', 'm', 'ma', 'mao', 'mo', 'o', 'oam', 'om'), 
+            array('a', 'am', 'ammo', 'm', 'ma', 'mao', 'mo', 'o', 'oam', 'om'), 
             array('mamo'))
         );
         
