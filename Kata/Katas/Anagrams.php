@@ -3,14 +3,11 @@
 namespace Kata\Katas;
 
 /**
- * Example Class with three versions of Binary Search. Only public methods are run.
- * Methods can be disabled with a @enabled: false tag in the method Doc.
+ * The objective of this kata is to take a seed word and find all anagrams and sub words within a word list.
+ * 
  */
 class Anagrams extends \Kata\Core\KataAbstract {
 
-    /**
-     * _setUp must exist and must always set a testSuite. Unlike PHPUnit _setUp is called only once.
-     */
     protected function _setUp() {
 	        
         $testSuite = new \Kata\Core\TestSuite;
