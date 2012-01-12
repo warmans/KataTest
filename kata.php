@@ -2,7 +2,9 @@
 <?php
 namespace Kata;
 
+DEFINE('DS', '\\');
 DEFINE('APPLICATION_PATH', realpath(dirname(__FILE__)));
+DEFINE('RESOURCE', APPLICATION_PATH.DS.'Kata'.DS.'Resources'.DS);
 
 require_once('Kata/Core/Loader.php');
 
