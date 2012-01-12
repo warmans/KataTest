@@ -39,7 +39,6 @@ class Anagrams extends \Kata\Core\KataAbstract {
         
         $matchedWords = array();
 
-        //filter any words longer than the requested word, any possible words convert to array. Don't store seed word.
         foreach($file as $line):
             
             //kill whitespace
