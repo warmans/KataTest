@@ -145,10 +145,14 @@ class Runner {
             $tStartTime = microtime();
             $result = $method->invokeArgs($classInstance, $test->getArgs());
             $tEndTime = microtime();
-            Log::log($test->getName() . " " . (($test->checkResult($result)) ? "passed" : "*failed*"));
+            Log::log($test->getName() . " " . $test->getResultText($result));
         endforeach;
         $mEndTime = microtime();
         Log::log('Completed all tests in ' . ($mEndTime - $mStartTime) . 'ms');
     }
+	
+	private function _varToString(){
+		
+	}
 
 }

@@ -51,7 +51,29 @@ class Test {
                 throw new Exception("Unknown assertion: $this->assertion");
         endswitch;
     }
-
+	
+	public function getResultText($result){
+		if($this->checkResult($result)){
+			return 'passed';
+		}
+		
+		return '*failed* value returned was:'.$this->_varToString($result);
+		
+	}
+	
+	private function _varToString($var){
+		switch(TRUE):
+			case is_array($var);
+				return '['.implode(", ", $var).']';
+			case is_int($var):
+				return (string)$var;
+			case is_object($var):
+				return '{'.$this->_varToString((array)$var).'}';
+			default:
+				return (string)$var;
+		endswitch;
+	}
+	
     /**
      * @return string 
      */
