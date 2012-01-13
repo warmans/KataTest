@@ -140,19 +140,13 @@ class Runner {
      */
     protected function _testMethod(\Kata\Core\KataAbstract $classInstance, \ReflectionMethod $method) {
         Log::log("Testing Method " . $method->getName());
-        $mStartTime = microtime();
+        $mStartTime = microtime(TRUE);
         foreach ($classInstance->getTestSuite() as $test):
-            $tStartTime = microtime();
             $result = $method->invokeArgs($classInstance, $test->getArgs());
-            $tEndTime = microtime();
             Log::log($test->getName() . " " . $test->getResultText($result));
         endforeach;
-        $mEndTime = microtime();
-        Log::log('Completed all tests in ' . ($mEndTime - $mStartTime) . 'ms');
+        $mEndTime = microtime(TRUE);
+        Log::log('Completed all tests in ' . ($mEndTime - $mStartTime) . ' seconds');
     }
-	
-	private function _varToString(){
-		
-	}
 
 }
