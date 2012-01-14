@@ -3,22 +3,32 @@
 namespace Kata\Katas;
 
 /**
- * The objective of this kata is to take a seed word and find all anagrams and sub words within a word list.
+ * Kata based on /r/php post
+ * 
+ * Create a script that takes a string for input, and from that string, produces all other words 
+ * (based on a dictionary or list of other possible words) that you can create from the letters of that string.
+ * Note, you choose to leave out letters, but you may not repeat any letters unless they appear multiple times in 
+ * the input string.
  * 
  */
 class Anagrams extends \Kata\Core\KataAbstract {
 
+    /**
+     * _setUp must exist and must always set a testSuite. Unlike PHPUnit _setUp is called only once.
+     */
     protected function _setUp() {
 	        
         $testSuite = new \Kata\Core\TestSuite;
         
         $testSuite->addTest(\Kata\Core\Test::build("t.ammo",
-            array('a', 'am', 'm', 'ma', 'mamo', 'mao', 'mo', 'o', 'oam', 'om'), //expected result
-            array('ammo'))  //find anagrams/sub-words for this
+            array(
+                'a', 'am', 'm', 'ma', 'mamo', 'mao', 'mo', 'o', 'oam', 'om'), 
+            array('ammo'))
         );
         
         $testSuite->addTest(\Kata\Core\Test::build("t.mamo",
-            array('a', 'am', 'ammo', 'm', 'ma', 'mao', 'mo', 'o', 'oam', 'om'), 
+            array(
+                'a', 'am', 'ammo', 'm', 'ma', 'mao', 'mo', 'o', 'oam', 'om'), 
             array('mamo'))
         );
         
@@ -26,53 +36,14 @@ class Anagrams extends \Kata\Core\KataAbstract {
             array('a', 'b', 'ba'), 
             array('ab'))
         );
-                
+                 
         $this->setTestSuite($testSuite);	
         parent::_setUp();
 		
     }
 
-    public function lineByLine($anagramSeed) {
-        
-        $fileinfo = new \SplFileInfo(RESOURCE.'wordlist.txt');
-        $file = $fileinfo->openFile('r');
-        
-        $matchedWords = array();
-
-        foreach($file as $line):
-            
-            //kill whitespace
-            $line = trim($line);
-            
-            //word is empty or too long or the the seed - skip
-            if(strlen($line) == 0 || strlen($line) > strlen($anagramSeed) || $line == $anagramSeed){
-                continue;
-            }
-        
-            $word = str_split($line);           
-            $matchedLetters = 0;
-            $letterPool = str_split($anagramSeed);
-            
-            //compare all it's letters against the anagram seed
-            foreach($word as $key=>$letter):
-                
-                $foundLetterKey = array_search($letter, $letterPool); 
-                
-                if($foundLetterKey !== FALSE){
-                    //once a letter has been used remove it from the possible letters to prevent matches re-using letters
-                    unset($letterPool[$foundLetterKey]);
-                    //note how many letters have been matched in this word
-                    $matchedLetters++;
-                }
-            endforeach;
-            
-            //all letters of the current word matched the anagram seed  - this is an anagram or sub-word
-            if($matchedLetters == count($word)){
-                $matchedWords[] = implode("", $word);
-            }
-        endforeach;     
-        
-        return $matchedWords;
+    public function mySolution($startingWord) {
+        //do something
     }
 		
 }
